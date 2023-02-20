@@ -1,0 +1,120 @@
+site_name: Mes documents CS2I
+# repo_url: https://gitlab.actilis.net/formation/docker/mkdocs-example.git
+docs_dir: src
+site_author: F. Micaux
+copyright: Copyright &copy; 2023 Actilis
+
+
+# Structure
+nav:
+  - Accueil: 
+    - index.md
+
+# Reglages du theme
+theme:
+  name: material
+  language: fr
+  # logo: assets/logo.png
+
+  include_search_page: false
+  search_index_only: true
+  collapse_navigation: true
+
+  font: false
+
+  titles_only: false
+  navigation_depth : 3
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - shell
+
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+#extra_css:
+#  - css/montheme.css
+
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      css_class: highlight
+      linenums: true
+      linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.superfences:
+      custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.snippets
+  - toc:
+      toc_depth: 3
+      permalink: true
+
+
+plugins:
+  - search:
+      lang: fr
+  # - with-pdf:
+      # output_path: doc.pdf
+      # author: F. Micaux
+      # #copyright: ANY TEXT
+      # #cover: false
+      # cover_title: Doc Project
+      # cover_subtitle: Documentation réalisée à partir de fichiers Markdown
+      # cover_logo: src/assets/logo.png
+      # #custom_template_path: TEMPLATES PATH
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+
+#extra:
+#  social:
+#    - icon: fontawesome/brands/docker
+#      link: https://docs.docker.com
+#    - icon: fontawesome/brands/git
+#      link: https://git-scm.com/
+#    - icon: fontawesome/brands/markdown
+#      link: https://squidfunk.github.io/mkdocs-material/
