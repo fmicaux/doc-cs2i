@@ -9,6 +9,9 @@ copyright: Copyright &copy; 2023 Actilis
 nav:
   - Accueil: 
     - index.md
+    - admin-avancee.md
+
+  
 
 # Reglages du theme
 theme:
