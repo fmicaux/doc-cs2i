@@ -109,9 +109,9 @@ plugins:
       # cover_subtitle: Documentation réalisée à partir de fichiers Markdown
       # cover_logo: src/assets/logo.png
       # #custom_template_path: TEMPLATES PATH
-  - git-revision-date-localized:
-      type: date
-      fallback_to_build_date: true
+  # - git-revision-date-localized:
+      # type: date
+      # fallback_to_build_date: true
 
 #extra:
 #  social:

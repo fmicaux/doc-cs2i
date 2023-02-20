@@ -1,6 +1,6 @@
 services:
   app:
-    #image: 
+    image: registry.gitlab.com/actilis/doc-cs2i:${VERSION:-latest}
     build:
       context: .
       dockerfile: ./Dockerfile
