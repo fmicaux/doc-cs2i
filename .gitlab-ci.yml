@@ -47,7 +47,7 @@ Scan de vulnerabilite:
   artifacts:
     when: always
     paths:
-    - scan-result/
+    - scan-result/scan-${CI_PROJECT_NAME}.log
     expire_in: 1 week
     
 # 
