@@ -35,11 +35,7 @@ Scan de vulnerabilite:
 
     - mkdir -p -m 2770 ${PWD}/scan-result
 
-    - docker container run --rm \
-             -v /var/run/docker.sock:/var/run/docker.sock \
-             -v trivy-cache:/root/.cache/  \
-             aquasec/trivy --cache-dir /root/.cache/  image --scanners vuln --no-progress  \
-                   ${IMAGE_NAME}:build-temp | tee ${PWD}/scan-result/scan-${CI_PROJECT_NAME}.log
+    - docker container run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache/ aquasec/trivy --cache-dir /root/.cache/  image --scanners vuln --no-progress ${IMAGE_NAME}:build-temp | tee ${PWD}/scan-result/scan-${CI_PROJECT_NAME}.log
 
     - |
       grep -q "CRITICAL: [^0]" ${PWD}/scan-result/scan-${CI_PROJECT_NAME}.log && \
