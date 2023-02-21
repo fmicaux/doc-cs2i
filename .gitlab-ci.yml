@@ -11,10 +11,15 @@ stages:          # List of stages for jobs, and their order of execution
 Construction:       # This job runs in the build stage, which runs first.
   stage: build
   before_script:
-    - set
+    - set > environnement.log
   script:
     # Build
     - docker image build -t ${IMAGE_NAME}:build-temp  .
+  artifacts:
+    when: always
+    paths:
+    - environnement.log
+    expire_in: 1 week
     
 
 Publication:
