@@ -1,0 +1,12 @@
+name: test-action-1
+on: push
+jobs:
+  build:
+  
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - name: Write a multi-line message
+      run: |
+        echo This demo file shows a wild leo
+        echo very basic and easy-to-leo-ok
