@@ -1,14 +1,26 @@
 image: docker:stable
 
 stages:          # List of stages for jobs, and their order of execution
+  - prebuild
   - build
-  - push
-  - deploy
+#  - push
+#  - deploy
+
+
+PreBuild:
+  stage: prebuild
+  script:
+  - set
+
 
 Construction:       # This job runs in the build stage, which runs first.
   stage: build
   script:
-    - docker compose build
+    # docker compose build
+    #     image: ${IMAGE:-registry.gitlab.com/actilis/doc-cs2i}:${VERSION:-latest}
+    - docker image build -t image:version  .
+  tags:
+  - runner-builder
 
 Push:
   stage: push
