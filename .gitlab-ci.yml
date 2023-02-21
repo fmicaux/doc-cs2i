@@ -22,12 +22,12 @@ Construction:       # This job runs in the build stage, which runs first.
   tags:
   - runner-builder
 
-Push:
-  stage: push
-  script:
-    - docker compose push
-  
-Deploiement:
-  stage: deploy
-  script:
-    - echo "Un jour, on déploie l'application"
+### Push:
+##  # stage: push
+##  # script:
+##    # - docker compose push
+##  # 
+### Deploiement:
+##  # stage: deploy
+##  # script:
+##    # - echo "Un jour, on déploie l'application"
