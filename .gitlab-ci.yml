@@ -41,7 +41,8 @@ Scan de vulnerabilite:
              aquasec/trivy --cache-dir /root/.cache/  image --scanners vuln --no-progress  \
                    ${REGISTRY_URL}:${HTTPD_VERSION}-${TAG_PREFIX} | tee ${PWD}/scan-result/scan-${CI_PROJECT_NAME}.log
 
-    - grep -q "CRITICAL: [^0]" ${PWD}/scan-result/scan-${CI_PROJECT_NAME}.log && \
+    - |
+      grep -q "CRITICAL: [^0]" ${PWD}/scan-result/scan-${CI_PROJECT_NAME}.log && \
            if [ ${STOP_IF_VULNERABILITY_FOUND:-0} != 0 ] ; then echo "Vulnérabilité CRITICAL détectée, arrêt du pipeline" && exit 1 ; fi
 
   artifacts:
