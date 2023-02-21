@@ -39,16 +39,16 @@ Scan de vulnerabilite:
 
     - |
       grep -q "CRITICAL: [^0]" scan-result/scan-${CI_PROJECT_NAME}.log && \
-           if [ ${STOP_IF_VULNERABILITY_FOUND:-0} != 0 ] ; then echo "Vulnérabilité CRITICAL détectée, arrêt du pipeline" && exit 1 ; fi
+           if [ ${STOP_IF_VULNERABILITY_FOUND:-0} != 0 ] ; then echo "Vulnérabilité CRITICAL détectée, arrêt du pipeline" && exit 1 ; fi 
 
 
     - ls -l scan-result
     
-  artifacts:
-    when: always
-    paths:
-    - scan-result/scan-${CI_PROJECT_NAME}.log
-    expire_in: 1 week
+  # artifacts:
+    # when: always
+    # paths:
+    # - scan-result/scan-${CI_PROJECT_NAME}.log
+    # expire_in: 1 week
     
 # 
 # Deploiement:
