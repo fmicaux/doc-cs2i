@@ -33,18 +33,18 @@ Scan de vulnerabilite:
   stage: vuln-scan
   script:
 
-    - mkdir -p -m 2770 ${PWD}/scan-result
+    - mkdir -p -m 2770 /scan-result
 
     - docker container run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache/ aquasec/trivy --cache-dir /root/.cache/  image --scanners vuln --no-progress ${IMAGE_NAME}:build-temp | tee ${PWD}/scan-result/scan-${CI_PROJECT_NAME}.log
 
     - |
-      grep -q "CRITICAL: [^0]" ${PWD}/scan-result/scan-${CI_PROJECT_NAME}.log && \
+      grep -q "CRITICAL: [^0]" /scan-result/scan-${CI_PROJECT_NAME}.log && \
            if [ ${STOP_IF_VULNERABILITY_FOUND:-0} != 0 ] ; then echo "Vulnérabilité CRITICAL détectée, arrêt du pipeline" && exit 1 ; fi
 
   artifacts:
     when: always
     paths:
-    - ${PWD}/scan-result
+    - /scan-result
     expire_in: 1 week
     
 # 
