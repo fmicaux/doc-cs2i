@@ -1,10 +1,10 @@
-image: docker:stable
-
+image: docker:23
+variables:
+  IMAGE_NAME: ${CI_REGISTRY}/${CI_PROJECT_PATH}
+  
 stages:          # List of stages for jobs, and their order of execution
   - prebuild
   - build
-#  - push
-#  - deploy
 
 
 PreBuild:
@@ -12,22 +12,21 @@ PreBuild:
   script:
   - set
 
-
 Construction:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     # docker compose build
     #     image: ${IMAGE:-registry.gitlab.com/actilis/doc-cs2i}:${VERSION:-latest}
-    - docker image build -t image:version  .
+    - docker image build -t ${IMAGE_NAME}:version  .
   tags:
   - runner-builder
 
-### Push:
-##  # stage: push
-##  # script:
-##    # - docker compose push
-##  # 
-### Deploiement:
-##  # stage: deploy
-##  # script:
-##    # - echo "Un jour, on déploie l'application"
+# Push:
+  # stage: push
+  # script:
+  # - docker compose push
+# 
+# Deploiement:
+  # stage: deploy
+  # script:
+  # - echo "Un jour, on déploie l'application"
